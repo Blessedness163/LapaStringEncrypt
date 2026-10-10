@@ -1,8 +1,8 @@
 <div align="center">
 
-![LapaStringEncrypt Header](./assets/banner.jpg)
+![LapaStringEncrypt Header](./assets/banner.png)
 
-# 🔴 [LapaStringEncrypt](https://github.com/Blessedness163/LapaStringEncrypt)
+<br/>
 
 **Hardened C++17 Cryptography & Compile-Time String Obfuscation Suite**
 
