@@ -1,8 +1,8 @@
 <div align="center">
 
-![LapaCrypto Header](./assets/banner.jpg)
+![LapaStringEncrypt Header](./assets/banner.jpg)
 
-# 🔴 LapaCrypto
+# 🔴 [LapaStringEncrypt](https://github.com/Blessedness163/LapaStringEncrypt)
 
 **Hardened C++17 Cryptography & Compile-Time String Obfuscation Suite**
 
@@ -52,16 +52,16 @@
 
 | Header | Layer / Category | Description |
 |:---|:---|:---|
-| [`LapaStringProtect.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaStringProtect.h) | **Master Entrypoint** | Drop-in macros: `LAPA_STR`, `LAPA_WSTR`, `LAPA_USE` |
-| [`LapaCommon.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaCommon.h) | Primitives | `SplitMix64` PRNG, compile-time seed generation, bit rotations |
-| [`LapaCaesar.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaCaesar.h) | Stage 1 | Dynamic progressive Caesar shift per byte index |
-| [`LapaByteTransform.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaByteTransform.h) | Stage 2 | Bijective affine ARX-SBox ($y = (13x + 7) \bmod 256$) & rotations |
-| [`LapaBase64.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaBase64.h) | Stage 3 | Keyed Base64 scrambler with compile-time Fisher-Yates shuffle |
-| [`LapaXOR.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaXOR.h) | Stage 4 | Multi-round ARX-XOR stream cipher with autokey feedback |
-| [`LapaPipeline.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaPipeline.h) | Stage 5 / Runtime | FNV-1a checksum validation, stack unwinding & RAII wipe |
-| [`LapaSymmetric.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaSymmetric.h) | Symmetric | AES-256-CBC and ChaCha20 via Windows CNG |
-| [`LapaAsymmetric.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaAsymmetric.h) | Asymmetric | RSA-2048 (OAEP SHA-256) and ECC NIST P-256 |
-| [`LapaHash.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/lapaXOREncrypt/LapaHash.h) | Hash & KDF | SHA-256, PBKDF2 (100k iters), Memory-Hard KDF |
+| [`LapaStringProtect.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaStringProtect.h) | **Master Entrypoint** | Drop-in macros: `LAPA_STR`, `LAPA_WSTR`, `LAPA_USE` |
+| [`LapaCommon.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaCommon.h) | Primitives | `SplitMix64` PRNG, compile-time seed generation, bit rotations |
+| [`LapaCaesar.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaCaesar.h) | Stage 1 | Dynamic progressive Caesar shift per byte index |
+| [`LapaByteTransform.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaByteTransform.h) | Stage 2 | Bijective affine ARX-SBox ($y = (13x + 7) \bmod 256$) & rotations |
+| [`LapaBase64.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaBase64.h) | Stage 3 | Keyed Base64 scrambler with compile-time Fisher-Yates shuffle |
+| [`LapaXOR.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaXOR.h) | Stage 4 | Multi-round ARX-XOR stream cipher with autokey feedback |
+| [`LapaPipeline.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaPipeline.h) | Stage 5 / Runtime | FNV-1a checksum validation, stack unwinding & RAII wipe |
+| [`LapaSymmetric.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaSymmetric.h) | Symmetric | AES-256-CBC and ChaCha20 via Windows CNG |
+| [`LapaAsymmetric.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaAsymmetric.h) | Asymmetric | RSA-2048 (OAEP SHA-256) and ECC NIST P-256 |
+| [`LapaHash.h`](file:///c:/Users/inrate1337/source/repos/lapaXOREncrypt/LapaStringEncrypt/LapaHash.h) | Hash & KDF | SHA-256, PBKDF2 (100k iters), Memory-Hard KDF |
 
 ---
 
@@ -94,17 +94,17 @@ auto wideToken = LAPA_WSTR(L"sk-proj-49182938471928374_SECRET");
 ```cpp
 #include "LapaSymmetric.h"
 
-auto key256  = LapaCrypto::Symmetric::GenerateSecureRandom(32);
-auto iv16    = LapaCrypto::Symmetric::GenerateSecureRandom(16);
-auto nonce12 = LapaCrypto::Symmetric::GenerateSecureRandom(12);
+auto key256  = LapaStringEncrypt::Symmetric::GenerateSecureRandom(32);
+auto iv16    = LapaStringEncrypt::Symmetric::GenerateSecureRandom(16);
+auto nonce12 = LapaStringEncrypt::Symmetric::GenerateSecureRandom(12);
 
 // AES-256-CBC (PKCS#7):
-auto aesCipher = LapaCrypto::Symmetric::EncryptAES256("Classified Data", key256, iv16);
-std::string aesPlain = LapaCrypto::Symmetric::DecryptAES256(aesCipher, key256, iv16);
+auto aesCipher = LapaStringEncrypt::Symmetric::EncryptAES256("Classified Data", key256, iv16);
+std::string aesPlain = LapaStringEncrypt::Symmetric::DecryptAES256(aesCipher, key256, iv16);
 
 // ChaCha20 (RFC 7539):
-auto streamCipher = LapaCrypto::Symmetric::EncryptChaCha20("Payload", key256, nonce12);
-std::string streamPlain = LapaCrypto::Symmetric::DecryptChaCha20(streamCipher, key256, nonce12);
+auto streamCipher = LapaStringEncrypt::Symmetric::EncryptChaCha20("Payload", key256, nonce12);
+std::string streamPlain = LapaStringEncrypt::Symmetric::DecryptChaCha20(streamCipher, key256, nonce12);
 ```
 
 ### 3. Asymmetric Encryption (RSA-2048 & ECC)
@@ -112,16 +112,16 @@ std::string streamPlain = LapaCrypto::Symmetric::DecryptChaCha20(streamCipher, k
 #include "LapaAsymmetric.h"
 
 // RSA-2048 keypair generation:
-auto rsaPair = LapaCrypto::Asymmetric::GenerateRSAKeyPair(2048);
+auto rsaPair = LapaStringEncrypt::Asymmetric::GenerateRSAKeyPair(2048);
 
 // Public-key encryption with OAEP SHA-256 padding:
-auto rsaCipher = LapaCrypto::Asymmetric::EncryptRSA("API_SECRET_KEY", rsaPair.publicKey);
+auto rsaCipher = LapaStringEncrypt::Asymmetric::EncryptRSA("API_SECRET_KEY", rsaPair.publicKey);
 
 // Private-key decryption:
-std::string rsaPlain = LapaCrypto::Asymmetric::DecryptRSA(rsaCipher, rsaPair.privateKey);
+std::string rsaPlain = LapaStringEncrypt::Asymmetric::DecryptRSA(rsaCipher, rsaPair.privateKey);
 
 // ECC NIST P-256 keypair:
-auto eccPair = LapaCrypto::Asymmetric::GenerateECCKeyPair();
+auto eccPair = LapaStringEncrypt::Asymmetric::GenerateECCKeyPair();
 ```
 
 ### 4. Hashing & Password Derivation
@@ -129,13 +129,13 @@ auto eccPair = LapaCrypto::Asymmetric::GenerateECCKeyPair();
 #include "LapaHash.h"
 
 // SHA-256 digest:
-std::string digest = LapaCrypto::Hash::ComputeSHA256Hex("Data");
+std::string digest = LapaStringEncrypt::Hash::ComputeSHA256Hex("Data");
 
 // PBKDF2-HMAC-SHA256 (100k rounds):
-std::string derivedKey = LapaCrypto::Hash::DeriveKeyPBKDF2Hex("Password", "Salt", 100000, 32);
+std::string derivedKey = LapaStringEncrypt::Hash::DeriveKeyPBKDF2Hex("Password", "Salt", 100000, 32);
 
 // Memory-Hard KDF (Argon2 design, allocates 2 MB RAM matrix):
-std::string memHash = LapaCrypto::Hash::MemoryHardPasswordHash("Password", "Salt", 2048, 2);
+std::string memHash = LapaStringEncrypt::Hash::MemoryHardPasswordHash("Password", "Salt", 2048, 2);
 ```
 
 ---
@@ -152,25 +152,25 @@ std::string memHash = LapaCrypto::Hash::MemoryHardPasswordHash("Password", "Salt
 [2] Symmetric Encryption (LapaSymmetric)
   AES-256 (CBC Mode + PKCS#7 Padding):
     * Original:     "Confidential business payload for AES-256-CBC"
-    * Ciphertext:   60FC73FFB508C3D7A3710EF72B3A35E25244DBA78BC4A13482DADBF169E2F78F8526485CDBE889B52BD4B35EA7CC7D37
+    * Ciphertext:   8D846AEB6BC754E3538E733E70975C79CF11AF8E9C913C12BD0793156E23EAA26517A0C7F6DC7E2F4785C94F67D77B46
     * Decrypted:    "Confidential business payload for AES-256-CBC"
     * Verification: [PASS] 100% Match
 
   ChaCha20 (RFC 7539 Stream Cipher):
     * Original:     "High-throughput stream cipher payload ChaCha20 (RFC 7539)"
-    * Ciphertext:   6D5A3A7CB55255B8F2818E87D47D8C348D7F6744EC0619798694F8CBC1B77502D16ABAA8D7B186D2E22CA9032941034DE769B8355BE336A6C1
+    * Ciphertext:   03C4F602F2722B7D178D26C309D4C0ECC7F3E7E779E27DF077487540DB0258FAFDE541D4D70336E8265E595B4BB09FC5C1C655DAC4ED56468A
     * Decrypted:    "High-throughput stream cipher payload ChaCha20 (RFC 7539)"
     * Verification: [PASS] 100% Match
 
 [3] Asymmetric Cryptography (LapaAsymmetric)
   RSA-2048 (OAEP SHA-256 Padding):
     * Original:     "CLIENT_SECRET_KEY_RSA_OAEP_2026"
-    * Ciphertext:   0661C610990B56D784CCABA6F329FD916F84948DC71BB170EE5FE4BF9175B9E0... [256 bytes]
+    * Ciphertext:   35AEEDE3E5E094403CB658B0F0779F4AB807D179D09910B0DA8AA9B325BE3E29... [256 bytes]
     * Decrypted:    "CLIENT_SECRET_KEY_RSA_OAEP_2026"
     * Verification: [PASS] 100% Match
 
   ECC NIST P-256 (secp256r1):
-    * Public Key:   45435331200000002F20F3693D8543B615533D730EF1ABA430667834280520CA... (NIST P-256 curve point)
+    * Public Key:   45435331200000002BB8339C7737745EF81CA0102C5CFA00C12A2AA761DA12F2... (NIST P-256 curve point)
     * Verification: [PASS] Keypair generated for ECDSA/ECDH
 
 [4] Cryptographic Hashing & Key Derivation (LapaHash)
@@ -206,13 +206,15 @@ std::string memHash = LapaCrypto::Hash::MemoryHardPasswordHash("Password", "Salt
 - **Compiler**: MSVC v143+ with C++17 support (`/std:c++17`)
 - **Backend**: Native Windows CNG (`bcrypt.lib`)
 
-### Building via MSBuild
+### Clone & Build
 ```cmd
-msbuild lapaXOREncrypt.sln /p:Configuration=Release /p:Platform=x64
+git clone https://github.com/Blessedness163/LapaStringEncrypt.git
+cd LapaStringEncrypt
+msbuild LapaStringEncrypt.sln /p:Configuration=Release /p:Platform=x64
 ```
 
 ### Direct Project Inclusion
-1. Copy the `lapaXOREncrypt` header files into your include directory.
+1. Copy the `LapaStringEncrypt` header files into your include directory.
 2. Link `bcrypt.lib` (automatically requested by headers on MSVC via `#pragma comment(lib, "bcrypt.lib")`).
 3. Compile with `/std:c++17` or higher.
 
@@ -221,4 +223,3 @@ msbuild lapaXOREncrypt.sln /p:Configuration=Release /p:Platform=x64
 ## 📄 License
 
 Distributed under the [MIT License](LICENSE).
-

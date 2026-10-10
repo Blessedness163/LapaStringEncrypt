@@ -1,0 +1,38 @@
+# Visual Studio build and cache artifacts
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+
+# Intermediate files
+*.obj
+*.o
+*.pdb
+*.idb
+*.ilk
+*.iobj
+*.ipdb
+*.tlog
+*.lastbuildstate
+*.recipe
+*.log
+
+# Executables and libraries output
+*.exe
+*.dll
+*.so
+*.dylib
+*.lib
+*.a
+
+# User-specific Visual Studio files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+Thumbs.db
+Desktop.ini
