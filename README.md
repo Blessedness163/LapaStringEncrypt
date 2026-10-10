@@ -1,7 +1,5 @@
 <div align="center">
 
-![LapaStringEncrypt Header](./assets/banner.png)
-
 <br/>
 
 **Hardened C++17 Cryptography & Compile-Time String Obfuscation Suite**
